@@ -11,7 +11,7 @@
   // Set the document's basic properties.
   set document(author: authors.map(a => a.name), title: title)
   set page(numbering: "1", number-align: center)
-  set text(font: "Source Sans Pro", lang: "en")
+  set text(font: "Source Sans Pro", lang: "en", size: 12pt)
 
   // Title page.
   // The page can contain a logo if you pass one with `logo: "logo.png"`.
