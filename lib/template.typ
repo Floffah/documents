@@ -52,4 +52,8 @@
   set par(justify: true)
 
   body
+
+  pagebreak()
+
+  bibliography("../references.yml")
 }
