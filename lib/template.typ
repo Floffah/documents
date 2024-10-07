@@ -1,3 +1,5 @@
+// Feature inspiration taken from Ilm - https://github.com/talal/ilm
+
 // The project function defines how your document looks.
 // It takes your content and some metadata and formats it.
 // Go ahead and customize it to your liking!
@@ -6,12 +8,26 @@
   authors: (),
   date: none,
   logo: none,
+
+  external-link-circle: true,
+  
   body,
 ) = {
   // Set the document's basic properties.
   set document(author: authors.map(a => a.name), title: title)
   set page(numbering: "1", number-align: center)
   set text(font: "Source Sans Pro", lang: "en", size: 12pt)
+
+  show link: it => {
+    it
+    // Workaround for ctheorems package so that its labels keep the default link styling.
+    if external-link-circle and type(it.dest) != label  {
+      sym.wj
+      h(1.6pt)
+      sym.wj
+      super(box(height: 3.8pt, circle(radius: 1.2pt, stroke: 0.7pt + rgb("#993333"))))
+    }
+  }
 
   // Title page.
   // The page can contain a logo if you pass one with `logo: "logo.png"`.
