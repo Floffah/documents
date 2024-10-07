@@ -18,6 +18,12 @@
   set page(numbering: "1", number-align: center)
   set text(font: "Source Sans Pro", lang: "en", size: 12pt)
 
+  // Set paragraph spacing.
+  show par: set block(above: 1.2em, below: 1.2em)
+
+  set heading(numbering: "1.a.i")
+  set par(leading: 0.75em)
+
   show link: it => {
     it
     // Workaround for ctheorems package so that its labels keep the default link styling.
@@ -66,6 +72,8 @@
 
   // Main body.
   set par(justify: true)
+  set list(marker: ([•], [◦], [‣], [⁃]))
+  let ignore(content) = {}
 
   body
 
