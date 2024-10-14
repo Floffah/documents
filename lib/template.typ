@@ -9,20 +9,27 @@
   date: none,
   logo: none,
 
+  formal: false,
   external-link-circle: true,
-  
+
   body,
 ) = {
   // Set the document's basic properties.
   set document(author: authors.map(a => a.name), title: title)
   set page(numbering: "1", number-align: center)
-  set text(font: "Source Sans Pro", lang: "en", size: 12pt)
+
+  let font = "Source Sans Pro"
+
+  if formal {
+    font = "Linux Libertine"
+  }
+
+  set text(font: font, lang: "en", size: 12pt)
 
   // Set paragraph spacing.
   show par: set block(above: 1.2em, below: 1.2em)
 
   set heading(numbering: "1.a.i")
-  set par(leading: 0.75em)
 
   show link: it => {
     it
@@ -79,5 +86,5 @@
 
   pagebreak()
 
-  bibliography("../references.yml")
+  bibliography(("../references.yml", "../zotero.bib"), style: "american-psychological-association")
 }
