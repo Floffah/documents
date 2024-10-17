@@ -52,7 +52,7 @@
         sym.wj
         h(0.6pt)
         sym.wj
-        super(box(height: 3.8pt, text("#", stroke: 0.1pt + rgb("#06b6d4"))))
+        super(box(height: 3.8pt, text("#", stroke: 0.2pt + rgb("#0284c7"))))
       }
     }
   }
