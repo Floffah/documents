@@ -2,9 +2,14 @@
 
 #show: project.with(
   title: "Title",
-  logo: "images/napier.png",
+  logo: "../images/napier.png",
   authors: (
     (name: "", affiliation: ""),
   ),
   date: "March 20, 2024",
+
+  formal: true,
+  figure-index: (
+    enabled: true
+  )
 )

@@ -1,4 +1,4 @@
-// Feature inspiration taken from Ilm - https://github.com/talal/ilm
+// Feature inspiration taken from Ilm (MIT) - https://github.com/talal/ilm
 
 // The project function defines how your document looks.
 // It takes your content and some metadata and formats it.
@@ -10,8 +10,15 @@
   logo: none,
 
   formal: false,
+  
+  // Whether to display a maroon circle next to external links.
   external-link-circle: true,
-
+  // Display an index of figures (images).
+  figure-index: (
+    enabled: false,
+    title: "",
+  ),
+  
   body,
 ) = {
   // Set the document's basic properties.
@@ -21,9 +28,9 @@
   let font = "Source Sans Pro"
 
   if formal {
-    font = "Linux Libertine"
+    font = "Libertinus Serif"
   }
-
+  
   set text(font: font, lang: "en", size: 12pt)
 
   // Set paragraph spacing.
@@ -31,6 +38,7 @@
 
   set heading(numbering: "1.a.i")
 
+  // See ILM (MIT) - https://github.com/talal/ilm/blob/main/lib.typ
   show link: it => {
     it
     // Workaround for ctheorems package so that its labels keep the default link styling.
@@ -81,10 +89,29 @@
   set par(justify: true)
   set list(marker: ([•], [◦], [‣], [⁃]))
   let ignore(content) = {}
-
+  
   body
 
   pagebreak()
 
-  bibliography(("../references.yml", "../zotero.bib"), style: "american-psychological-association")
+  bibliography(("../references.yml", "../zotero.bib"), style: "institute-of-electrical-and-electronics-engineers")
+
+  // See ILM (MIT) - https://github.com/talal/ilm/blob/main/lib.typ
+  let fig-t(kind) = figure.where(kind: kind)
+  let has-fig(kind) = counter(fig-t(kind)).get().at(0) > 0
+  if figure-index.enabled {
+    show outline: set heading(outlined: true)
+    context {
+      let imgs = figure-index.enabled and has-fig(image)
+      if imgs {
+        // Note that we pagebreak only once instead of each each
+        // individual index. This is because for documents that only have a couple of
+        // figures, starting each index on new page would result in superfluous
+        // whitespace.
+        pagebreak()
+      }
+
+      if imgs { outline(title: figure-index.at("title", default: "Index of Figures"), target: fig-t(image)) }
+    }
+  }
 }
