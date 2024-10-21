@@ -34,7 +34,7 @@
   set text(font: font, lang: "en", size: 12pt)
 
   // Set paragraph spacing.
-  show par: set block(above: 1.2em, below: 1.2em)
+  set par(spacing: 1.2em)
 
   set heading(numbering: "1.a.i")
 
@@ -94,7 +94,10 @@
 
   // Main body.
   set par(justify: true)
+  set text(hyphenate: false)
   set list(marker: ([•], [◦], [‣], [⁃]))
+
+  // Utils
   let ignore(content) = {}
   
   body
