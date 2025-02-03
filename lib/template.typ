@@ -8,6 +8,7 @@
   authors: (),
   date: none,
   logo: none,
+  abstract: none,
 
   formal: false,
   
@@ -85,6 +86,23 @@
 
   v(2.4fr)
   pagebreak()
+
+  // Abstract page.
+  if abstract != none {
+    v(1fr)
+    
+    align(center)[
+      #heading(
+        outlined: false,
+        numbering: none,
+        text(0.85em, smallcaps[Abstract]),
+      )
+      #abstract
+    ]
+
+    v(1.618fr)
+    pagebreak()
+  }
 
 
   // Table of contents.
