@@ -143,3 +143,12 @@
     }
   }
 }
+
+// APA (7th) format proxy citing
+#let cite-via(
+  citation,
+  via,
+  form: "normal"
+) = {
+  cite(citation, form: form, supplement: "as cited in " + cite(via, form: "author") + " " + cite(via, form: "year"))
+}
