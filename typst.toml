@@ -1,0 +1,12 @@
+[package]
+name = "napier-formal-template-base"
+version = "0.1.2"
+entrypoint = "main.typ"
+description = "Formal academic paper template for Napier"
+categories = [ ]
+disciplines = [ ]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "images/napier.png"
